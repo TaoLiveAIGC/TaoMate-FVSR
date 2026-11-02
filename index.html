@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TaoMate-FVSR: audio-guided facial video restoration and visual dubbing for AI-generated scenes. Explore synchronized full-scene and facial-detail comparisons.">
+  <meta name="theme-color" content="#faf7f2">
+  <title>TaoMate-FVSR</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=reference-grid-20261102">
+  <link rel="stylesheet" href="branding.css">
+  <script src="app.js?v=taomate-brand-20261102" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#restoration">Skip to video comparisons</a>
+  <header class="navigation">
+    <a class="brand" href="#top" aria-label="TaoMate-FVSR home"><span class="brand-mark" aria-hidden="true"></span>TaoMate-FVSR</a>
+    <nav aria-label="Main navigation">
+      <a href="#collection">Videos</a>
+      <a href="#restoration">Restoration</a>
+      <a href="#dubbing">Dubbing</a>
+      <a href="#scenes">Full scenes</a>
+      <a href="#method">Method</a>
+    </nav>
+    <a class="nav-action" href="#collection">Explore demos <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="project-title">
+      <p class="eyebrow"><span class="small-mark"></span> Audio-guided facial video restoration</p>
+      <h1 id="project-title">TaoMate<span>-FVSR</span></h1>
+      <h2>Beyond Sharpening:<br class="mobile-break"> Audio-Guided Facial Video Restoration</h2>
+      <p class="hero-description">Bring small faces back into focus.<br>Recover facial detail and audio-consistent articulation,<br class="desktop-break"> while keeping the original scene.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#collection">Explore the video library <span aria-hidden="true">↓</span></a>
+        <a class="button button-quiet" href="#method">How it works <span aria-hidden="true">↗</span></a>
+      </div>
+      <nav class="resource-links" aria-label="Project resources">
+        <a class="resource-link" href="https://github.com/TaoLiveAIGC/TaoMate-FVSR/tree/main" target="_blank" rel="noreferrer">Code <span aria-hidden="true">↗</span></a>
+        <span class="resource-link is-disabled" aria-disabled="true">arXiv <small>Coming soon</small></span>
+        <span class="resource-link is-disabled" aria-disabled="true">Hugging Face <small>Coming soon</small></span>
+      </nav>
+      <div class="hero-tags" aria-label="Demonstrated tasks"><span>Facial restoration</span><span>Visual dubbing</span><span>Scene-level presentation</span></div>
+    </section>
+
+    <section id="collection" class="collection-section page-width" aria-labelledby="collection-title">
+      <div class="section-heading">
+        <div><p class="section-index">THE VIDEO COLLECTION</p><h2 id="collection-title">More scenes.<br>More ways to compare.</h2></div>
+        <p id="collection-summary">Explore the restored scenes and replacement-audio examples.<br>Choose a thumbnail to open its synchronized comparison.</p>
+      </div>
+      <div class="collection-filters" role="group" aria-label="Filter video library">
+        <button data-filter="all" aria-pressed="true">All videos <span data-count="all"></span></button>
+        <button data-filter="restoration" aria-pressed="false">Restoration <span data-count="restoration"></span></button>
+        <button data-filter="dubbing" aria-pressed="false">Dubbing <span data-count="dubbing"></span></button>
+        <button data-filter="fullscene" aria-pressed="false">Full scenes <span data-count="fullscene"></span></button>
+      </div>
+      <div id="video-library" class="video-library"><p class="loading-message">Loading the video collection…</p></div>
+    </section>
+
+    <section id="restoration" class="demo-section page-width" aria-labelledby="restoration-title">
+      <div class="section-heading">
+        <div><p class="section-index">01 / ORIGINAL AUDIO</p><h2 id="restoration-title">Small in the scene.<br>Clear in the details.</h2></div>
+        <p>Restore facial detail under the original audio.<br>The full shot gives context; synchronized head crops<br class="desktop-break"> reveal the lips, teeth, and surrounding texture.</p>
+      </div>
+      <p class="comparison-guide"><span>COMPARE</span> Input + two selectable baselines + our output, on one shared timeline. Change a baseline using the menu below its crop.</p>
+      <div id="restoration-demo" class="demo-mount" aria-live="polite"><p class="loading-message">Loading restoration examples…</p></div>
+      <p class="section-note"><span class="note-dot"></span> Native AIGC inputs · one shared timeline · audio plays from our output only</p>
+    </section>
+
+    <section id="dubbing" class="demo-section page-width" aria-labelledby="dubbing-title">
+      <div class="section-heading">
+        <div><p class="section-index">02 / REPLACEMENT AUDIO</p><h2 id="dubbing-title">New audio.<br>The same scene.</h2></div>
+        <p>Guide mouth reconstruction with replacement audio.<br>Compare our joint restoration–dubbing result with<br class="desktop-break"> super-resolution followed by a separate dubbing model.</p>
+      </div>
+      <p class="comparison-guide"><span>COMPARE</span> Choose two baselines to inspect alongside the input and our output. All method outputs follow the same target audio.</p>
+      <div id="dubbing-demo" class="demo-mount" aria-live="polite"><p class="loading-message">Loading dubbing examples…</p></div>
+      <p class="section-note"><span class="note-dot"></span> All outputs within a case use the same target audio. Input is a visual control.</p>
+    </section>
+
+    <section id="scenes" class="demo-section page-width" aria-labelledby="scenes-title">
+      <div class="section-heading">
+        <div><p class="section-index">03 / BEYOND THE CLOSE-UP</p><h2 id="scenes-title">See the whole picture.</h2></div>
+        <p>View the result in the original composition.<br>Portrait and wide shots retain the scene around<br class="desktop-break"> the restored facial region.</p>
+      </div>
+      <div id="fullscene-demo" class="demo-mount" aria-live="polite"><p class="loading-message">Preparing full-scene comparisons…</p></div>
+      <p class="section-note"><span class="note-dot"></span> Scene composites: the restored head is placed back into the source shot. The body and background are not super-resolved.</p>
+    </section>
+
+    <section id="method" class="method-section page-width" aria-labelledby="method-title">
+      <p class="section-index">04 / THE IDEA</p>
+      <div class="method-heading"><h2 id="method-title">Facial detail and articulation.<br>One reconstruction process.</h2><p>Low-quality video provides source structure, an appearance reference provides detail, and target audio guides mouth motion.</p></div>
+      <figure class="method-figure">
+        <img src="assets/method-overview.png" alt="TaoMate-FVSR framework: source video, appearance reference, and audio condition a facial video restoration model." loading="lazy" width="2000" height="1000">
+        <figcaption>Audio-guided restoration with structured appearance and motion conditioning.</figcaption>
+      </figure>
+      <div class="method-summary">
+        <div><span>01</span><h3>Retain source structure</h3><p>Source–noise mixing retains visual evidence while allowing ambiguous mouth details to be reconstructed.</p></div>
+        <div><span>02</span><h3>Separate appearance and motion</h3><p>Structured reference conditioning distinguishes high-quality appearance cues from continuous motion history.</p></div>
+        <div><span>03</span><h3>Restore under target audio</h3><p>Original audio supports facial restoration. Replacement audio enables visual dubbing in the same model.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-width">
+    <div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>TaoMate-FVSR</a><p>Beyond Sharpening: Audio-Guided Facial Video Restoration</p></div>
+    <div class="footer-notes"><p><a href="https://github.com/TaoLiveAIGC/TaoMate-FVSR/tree/main" target="_blank" rel="noreferrer">Code ↗</a> · <span>arXiv · Coming soon</span> · <span>Hugging Face · Coming soon</span></p><p>TaoMate-FVSR uses the original reference; TaoMate-FVSR+ uses a GPT-Image-edited reference.</p><p>Generated source scenes: <a href="https://www.minimax.io/blog/minimax-h3" target="_blank" rel="noreferrer">MiniMax-H3 ↗</a></p><p>Precomputed research demonstrations, not an online inference service.</p></div>
+  </footer>
+  <noscript><p class="no-script">Please enable JavaScript to use the synchronized video comparisons.</p></noscript>
+</body>
+</html>
