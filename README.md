@@ -413,12 +413,6 @@ If you find TaoMate-FVSR useful in your research, please cite:
 }
 ```
 
-## License
-
-Source code is released under [Apache-2.0](LICENSE). Third-party code and model
-weights remain subject to their respective upstream licenses. See
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for component attribution.
-
 ## Acknowledgments
 
 We thank the authors and maintainers of [Wan2.2](https://github.com/Wan-Video/Wan2.2),
