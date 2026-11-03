@@ -3,6 +3,7 @@
     "repo_id": "TaoLiveAIGC/TaoMate-FVSR",
     "revision": "main",
     "filename": "TaoMate-FVSR.safetensors",
+    "config_filename": "config.json",
     "local_path": "TaoMate-FVSR.safetensors"
   },
   "vae": {

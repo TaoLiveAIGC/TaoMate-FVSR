@@ -48,6 +48,8 @@ def resolve_asset(name, override, model_dir, sources, *, offline=False, cache_di
             path = Path(snapshot_download(**options, allow_patterns=[
                 'config.json', 'preprocessor_config.json', 'model.safetensors', 'pytorch_model.bin']))
         else:
+            if spec.get('config_filename') and not offline:
+                hf_hub_download(**options, filename=spec['config_filename'])
             path = Path(hf_hub_download(**options, filename=spec['filename']))
     if not path.exists():
         raise FileNotFoundError(f"Missing {name} asset: {path}")

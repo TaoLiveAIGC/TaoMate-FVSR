@@ -2,7 +2,7 @@ import io
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import call, patch
 
 from livevsr.cli import parser, validate
 from livevsr.geometry import windows, input_indices
@@ -104,12 +104,16 @@ class WeightsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'TaoMate-FVSR.safetensors'
             path.touch()
-            self.assertEqual(resolve_asset('checkpoint', None, Path(tmp), load_sources()), path.resolve())
+            with patch('huggingface_hub.hf_hub_download') as download:
+                self.assertEqual(resolve_asset('checkpoint', None, Path(tmp), load_sources()), path.resolve())
+                self.assertEqual(resolve_asset('checkpoint', path, None, load_sources()), path.resolve())
+                download.assert_not_called()
 
     def test_official_upstream_sources(self):
         sources = load_sources()
         self.assertEqual(sources['checkpoint']['repo_id'], 'TaoLiveAIGC/TaoMate-FVSR')
         self.assertEqual(sources['checkpoint']['filename'], 'TaoMate-FVSR.safetensors')
+        self.assertEqual(sources['checkpoint']['config_filename'], 'config.json')
         for name in ('gpen_weights', 'gpen_detector', 'gpen_parser'):
             spec = sources[name]
             self.assertEqual(spec['url'], 'https://public-vigen-video.oss-cn-shanghai.aliyuncs.com/'
@@ -141,11 +145,23 @@ class WeightsTests(unittest.TestCase):
             path.touch()
             with patch('huggingface_hub.hf_hub_download', return_value=str(path)) as download:
                 for offline in (False, True):
+                    download.reset_mock()
                     self.assertEqual(resolve_asset('checkpoint', None, None, load_sources(),
                                                    offline=offline, cache_dir=tmp), path)
-                    download.assert_called_with(repo_id='TaoLiveAIGC/TaoMate-FVSR',
-                        revision='main', local_files_only=offline, cache_dir=tmp,
-                        filename='TaoMate-FVSR.safetensors')
+                    options = dict(repo_id='TaoLiveAIGC/TaoMate-FVSR', revision='main',
+                                   local_files_only=offline, cache_dir=tmp)
+                    expected = [] if offline else [call(**options, filename='config.json')]
+                    expected.append(call(**options, filename='TaoMate-FVSR.safetensors'))
+                    self.assertEqual(download.call_args_list, expected)
+
+    def test_huggingface_vae_download_is_unchanged(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'Wan2.2_VAE.pth'
+            path.touch()
+            with patch('huggingface_hub.hf_hub_download', return_value=str(path)) as download:
+                self.assertEqual(resolve_asset('vae', None, None, load_sources(), cache_dir=tmp), path)
+                download.assert_called_once_with(repo_id='Wan-AI/Wan2.2-TI2V-5B',
+                    revision='main', local_files_only=False, cache_dir=tmp, filename='Wan2.2_VAE.pth')
 
     def test_upstream_download_and_cached_offline_reuse(self):
         with tempfile.TemporaryDirectory() as tmp:

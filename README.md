@@ -259,10 +259,10 @@ hf download TaoLiveAIGC/TaoMate-FVSR \
 
 The Hub's [download statistics](https://huggingface.co/docs/hub/models-download-stats)
 count requests to `config.json`; weight-only downloads are not counted under the
-current configuration. The command above includes both files. The current CLI's
-automatic checkpoint download fetches only the weights, so use the explicit
-command above to include the configuration. `config.json` documents the inference
-settings; it does not override CLI arguments.
+current configuration. Both the command above and the CLI's automatic online
+checkpoint download fetch the weights and configuration. `config.json` documents
+the inference settings; it does not override CLI arguments. Local checkpoints and
+`--offline` reuse remain unchanged and do not require this configuration file.
 
 Omit `--model-dir` and `--checkpoint` to download our model automatically using
 [`livevsr/model_sources.json`](livevsr/model_sources.json). Wan VAE and HuBERT
