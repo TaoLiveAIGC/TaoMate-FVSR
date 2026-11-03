@@ -9,6 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=center-resources-20261103">
   <link rel="stylesheet" href="branding.css">
+  <link rel="stylesheet" href="hero.css?v=gallery-diagonal-20261103">
   <script src="app.js?v=taomate-brand-20261102" defer></script>
 </head>
 <body>
@@ -27,6 +28,15 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="project-title">
+      <div class="hero-comparison" role="img" aria-label="The gallery: the original scene on the left and TaoMate-FVSR+ on the right, with matching upper-body crops separated diagonally.">
+        <div class="hero-before"><img src="assets/media/h3-768p-20261102/ours/gallery__original/source.jpg" alt="" width="1344" height="768" fetchpriority="high"></div>
+        <div class="hero-after"><img src="assets/media/h3-768p-20261102/ours/gallery__original/composite.jpg" alt="" width="1344" height="768" fetchpriority="high"></div>
+        <div class="hero-shade"></div>
+        <svg class="hero-diagonal" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M 70 0 L 30 100" vector-effect="non-scaling-stroke"/></svg>
+        <span class="hero-image-label hero-label-before">BEFORE <strong>Original</strong></span>
+        <span class="hero-image-label hero-label-after">AFTER <strong>TaoMate-FVSR+</strong></span>
+      </div>
+      <div class="hero-content">
       <p class="eyebrow"><span class="small-mark"></span> Audio-guided facial video restoration</p>
       <h1 id="project-title">TaoMate<span>-FVSR</span></h1>
       <h2>Beyond Sharpening:<br class="mobile-break"> Audio-Guided Facial Video Restoration</h2>
@@ -41,6 +51,7 @@
         <a class="resource-link" href="https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR" target="_blank" rel="noreferrer">Hugging Face <span aria-hidden="true">↗</span></a>
       </nav>
       <div class="hero-tags" aria-label="Demonstrated tasks"><span>Facial restoration</span><span>Visual dubbing</span><span>Scene-level presentation</span></div>
+      </div>
     </section>
 
     <section id="collection" class="collection-section page-width" aria-labelledby="collection-title">
