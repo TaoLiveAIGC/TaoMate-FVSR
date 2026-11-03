@@ -79,6 +79,10 @@
   }
   async function play() {
     if (playing || starting || userPaused || !inView || document.hidden) return;
+    if (videos.some(video => video.readyState < 2)) {
+      status.textContent = 'Loading synchronized video…';
+      return;
+    }
     starting = true;
     updatePlayButton();
     status.textContent = 'Loading synchronized video…';
