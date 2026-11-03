@@ -431,6 +431,3 @@ with GPEN) for reference-frame preparation; and
 We thank [DWPose](https://github.com/IDEA-Research/DWPose),
 [MMDetection](https://github.com/open-mmlab/mmdetection), and
 [MMPose](https://github.com/open-mmlab/mmpose) for person detection and landmark estimation.
-We also thank [TaoMate](https://github.com/TaoLiveAIGC/TaoMate) and
-[TaoMate-HD](https://github.com/TaoLiveAIGC/TaoMate-HD) for the repository
-presentation references.
