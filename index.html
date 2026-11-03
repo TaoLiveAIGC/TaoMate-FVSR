@@ -4,13 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="TaoMate-FVSR: audio-guided facial video restoration and visual dubbing for AI-generated scenes. Explore synchronized full-scene and facial-detail comparisons.">
-  <meta name="theme-color" content="#faf7f2">
+  <meta name="theme-color" content="#090a0b">
   <title>TaoMate-FVSR</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=center-resources-20261103">
   <link rel="stylesheet" href="branding.css">
-  <link rel="stylesheet" href="hero.css?v=gallery-diagonal-20261103">
-  <script src="app.js?v=taomate-brand-20261102" defer></script>
+  <link rel="stylesheet" href="dark.css?v=20261103">
+  <link rel="stylesheet" href="hero.css?v=gallery-video-20261103">
+  <script src="app.js?v=hero-video-20261103" defer></script>
+  <script src="hero.js?v=gallery-video-20261103" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#restoration">Skip to video comparisons</a>
@@ -28,18 +30,14 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="project-title">
-      <div class="hero-comparison" role="img" aria-label="The gallery: the original scene on the left and TaoMate-FVSR+ on the right, with matching upper-body crops separated diagonally.">
-        <div class="hero-before"><img src="assets/media/h3-768p-20261102/ours/gallery__original/source.jpg" alt="" width="1344" height="768" fetchpriority="high"></div>
-        <div class="hero-after"><img src="assets/media/h3-768p-20261102/ours/gallery__original/composite.jpg" alt="" width="1344" height="768" fetchpriority="high"></div>
-        <div class="hero-shade"></div>
-        <svg class="hero-diagonal" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M 70 0 L 30 100" vector-effect="non-scaling-stroke"/></svg>
-        <span class="hero-image-label hero-label-before">BEFORE <strong>Original</strong></span>
-        <span class="hero-image-label hero-label-after">AFTER <strong>TaoMate-FVSR+</strong></span>
+      <div class="hero-backdrop" aria-hidden="true">
+        <video data-hero-scene src="https://raw.githubusercontent.com/TaoLiveAIGC/TaoMate-FVSR/media/assets/media/h3-768p-20261102/ours/gallery__original/source.mp4" poster="assets/media/h3-768p-20261102/ours/gallery__original/source.jpg" muted loop playsinline preload="auto" tabindex="-1"></video>
       </div>
+      <div class="hero-layout page-width">
       <div class="hero-content">
       <p class="eyebrow"><span class="small-mark"></span> Audio-guided facial video restoration</p>
       <h1 id="project-title">TaoMate<span>-FVSR</span></h1>
-      <h2>Beyond Sharpening:<br class="mobile-break"> Audio-Guided Facial Video Restoration</h2>
+      <h2>Beyond Sharpening.<br>Audio-Guided Facial Video Restoration.</h2>
       <p class="hero-description">Bring small faces back into focus.<br>Recover facial detail and audio-consistent articulation,<br class="desktop-break"> while keeping the original scene.</p>
       <div class="hero-actions">
         <a class="button button-primary" href="#collection">Explore the video library <span aria-hidden="true">↓</span></a>
@@ -51,6 +49,25 @@
         <a class="resource-link" href="https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR" target="_blank" rel="noreferrer">Hugging Face <span aria-hidden="true">↗</span></a>
       </nav>
       <div class="hero-tags" aria-label="Demonstrated tasks"><span>Facial restoration</span><span>Visual dubbing</span><span>Scene-level presentation</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-heading"><span>THE GALLERY</span><span>Drag to reveal the detail <span aria-hidden="true">↔</span></span></div>
+        <div class="hero-head-comparison" aria-label="The gallery synchronized before and after facial restoration">
+          <video data-hero-before src="https://raw.githubusercontent.com/TaoLiveAIGC/TaoMate-FVSR/media/assets/media/h3-768p-20261102/ours/gallery__original/input.mp4" poster="assets/media/h3-768p-20261102/ours/gallery__original/input.jpg" aria-label="Original Gallery head crop" muted loop playsinline preload="auto"></video>
+          <div class="hero-head-after"><video data-hero-after src="https://raw.githubusercontent.com/TaoLiveAIGC/TaoMate-FVSR/media/assets/media/h3-768p-20261102/ours/gallery__original/ours.mp4" poster="assets/media/h3-768p-20261102/ours/gallery__original/ours.jpg" aria-label="TaoMate-FVSR+ restored Gallery head crop" muted loop playsinline preload="auto"></video></div>
+          <svg class="hero-diagonal" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M 60 0 L 40 100" vector-effect="non-scaling-stroke"/></svg>
+          <div class="hero-reveal-handle" role="slider" tabindex="0" aria-label="Before and after video comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% original, 50% enhanced" aria-orientation="horizontal" aria-describedby="hero-drag-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M12 5v14"/></svg></div>
+          <span class="hero-video-label hero-original-label">Original</span><span class="hero-video-label hero-enhanced-label">TaoMate-FVSR+</span>
+        </div>
+        <div class="hero-video-toolbar">
+          <p id="hero-drag-hint">Drag the diagonal · same frame, same crop</p>
+          <div class="hero-video-buttons">
+            <button class="hero-media-button" data-hero-play aria-label="Pause background video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span>Pause</span></button>
+            <button class="hero-media-button" data-hero-sound aria-label="Turn background sound on" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-6 5H2v4h3l6 5ZM16 9l6 6m0-6-6 6"/></svg><span>Sound off</span></button>
+          </div>
+        </div>
+        <p class="hero-video-status" role="status">Loading synchronized video…</p>
+      </div>
       </div>
     </section>
 

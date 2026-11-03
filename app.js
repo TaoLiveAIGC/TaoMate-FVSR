@@ -388,10 +388,11 @@ loadDemos().catch(error => {
 });
 
 document.addEventListener("visibilitychange", () => { if(document.hidden) controllers.forEach(controller => controller.pause()); });
+document.addEventListener("taomate:hero-play", () => controllers.forEach(controller => controller.pause()));
 document.addEventListener("keydown", event => {
   if (!activeController || event.altKey || event.ctrlKey || event.metaKey) return;
   const target = event.target;
-  if (target.closest("input, select, textarea, dialog, [contenteditable='true'], [role='tab']")) return;
+  if (target.closest(".hero, input, select, textarea, dialog, [contenteditable='true'], [role='tab']")) return;
   if (event.code === "Space" && !target.closest("button, a")) {
     event.preventDefault(); activeController.toggle();
   } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
