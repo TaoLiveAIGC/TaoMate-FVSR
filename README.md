@@ -1,21 +1,18 @@
-<div align="center">
+# <img src="https://taoliveaigc.github.io/TaoMate-FVSR/assets/favicon.svg" width="40" height="40" alt="" /> TaoMate-FVSR
 
-<h1>Taomatefvsr</h1>
-<h3>Audio-Conditioned Face Video Restoration and Visual Dubbing</h3>
+**Audio-Guided Facial Video Restoration**
 
-</div>
+[![arXiv](https://img.shields.io/badge/arXiv-2611.03393-red.svg)](https://arxiv.org/pdf/2611.03393)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://taoliveaigc.github.io/TaoMate-FVSR/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow)](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR)
+[![Code License](https://img.shields.io/badge/Code-Apache--2.0-green)](LICENSE)
 
-[Paper](https://arxiv.org/pdf/2611.03393) ·
-[Project Page](https://taoliveaigc.github.io/TaoMate-FVSR/) ·
-[Demo](#demo) ·
-[Results](#experimental-results) ·
-[Model Weights](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR) ·
-[Installation](#installation) ·
-[Model Downloads](#model-downloads) ·
-[Inference](#inference) ·
+[Demo](#demo) · [Results](#experimental-results) ·
+[Installation](#installation) · [Model Downloads](#model-downloads) ·
+[Inference](#inference) · [Citation](#citation) ·
 [Technical Guide](docs/inference.md)
 
-Taomatefvsr restores face videos with audio conditioning, sparse visual
+TaoMate-FVSR restores face videos with audio conditioning, sparse visual
 references, and generated-frame history. It supports restoration with the
 original audio and visual dubbing with replacement speech.
 
@@ -30,25 +27,39 @@ original audio and visual dubbing with replacement speech.
 This repository contains only the standalone inference runtime. Model weights
 are downloaded separately, and input media is supplied locally.
 
+## News
+
+- **2026-11-03:** 🎉 Inference code released, including full-scene crop/paste-back, scale-matched GPEN references, and 1× / 2× inference through one entry point.
+- **2026-11-02:** Our [paper](https://arxiv.org/pdf/2611.03393) is available on arXiv.
+
 ## Demo
 
 **The Gallery** — TaoMate-FVSR+ restoration example from the project page.
 
-<p align="center">
-  <a href="https://taoliveaigc.github.io/TaoMate-FVSR/#top">
-    <img src="https://taoliveaigc.github.io/TaoMate-FVSR/assets/media/h3-768p-20261102/ours/gallery__original/ours.jpg" alt="Play The Gallery — TaoMate-FVSR+ restoration demo" width="480">
-  </a>
-</p>
+<table>
+  <thead>
+    <tr><th align="center">Input</th><th align="center">TaoMate-FVSR+</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://taoliveaigc.github.io/TaoMate-FVSR/#top"><img src="https://taoliveaigc.github.io/TaoMate-FVSR/assets/media/h3-768p-20261102/ours/gallery__original/input.jpg" alt="The Gallery — input face crop" width="320"></a></td>
+      <td align="center"><a href="https://taoliveaigc.github.io/TaoMate-FVSR/#top"><img src="https://taoliveaigc.github.io/TaoMate-FVSR/assets/media/h3-768p-20261102/ours/gallery__original/ours.jpg" alt="The Gallery — TaoMate-FVSR+ restored face crop" width="320"></a></td>
+    </tr>
+  </tbody>
+</table>
 
-[▶ Play The Gallery / compare before and after](https://taoliveaigc.github.io/TaoMate-FVSR/#top)
-· [Video file (MP4)](https://raw.githubusercontent.com/TaoLiveAIGC/TaoMate-FVSR/media/assets/media/h3-768p-20261102/ours/gallery__original/ours.mp4)
+[▶ Watch the synchronized comparison](https://taoliveaigc.github.io/TaoMate-FVSR/#top)
+· [Restored video (MP4)](https://raw.githubusercontent.com/TaoLiveAIGC/TaoMate-FVSR/media/assets/media/h3-768p-20261102/ours/gallery__original/ours.mp4)
+· [More demos](https://taoliveaigc.github.io/TaoMate-FVSR/#collection)
+
+*The “+” variant uses a GPT-Image-enhanced reference frame. Click either preview to play the before/after comparison.*
 
 ## Experimental Results
 
 Results from our [paper](https://arxiv.org/pdf/2611.03393). ↑ indicates higher
 is better; ↓ indicates lower is better. Scores are video-wise means, and GT
 rows provide undegraded-source context rather than a competing method.
-<p><strong>Bold</strong> marks the best method result; <u>underline</u> marks the second-best.
+<p><strong>Bold</strong> marks the best method result; <ins>underline</ins> marks the second-best.
 GT is excluded from both rankings.</p>
 
 ### Facial restoration under original audio
@@ -65,9 +76,9 @@ averaged equally over common valid clips.
 </thead>
 <tbody>
   <tr><td align="left">GT</td><td align="right">—</td><td align="right">—</td><td align="right">—</td><td align="right">—</td><td align="right">6.959</td><td align="right">7.863</td><td align="right">62.70</td><td align="right">0.4525</td><td align="right">0.7735</td><td align="right">0.6148</td></tr>
-  <tr><td align="left">GPEN</td><td align="right">26.77</td><td align="right">0.7970</td><td align="right">0.2267</td><td align="right">0.1825</td><td align="right">6.309</td><td align="right">8.288</td><td align="right"><u>76.47</u></td><td align="right"><u>0.7032</u></td><td align="right"><u>0.8931</u></td><td align="right"><u>0.8505</u></td></tr>
+  <tr><td align="left">GPEN</td><td align="right">26.77</td><td align="right">0.7970</td><td align="right">0.2267</td><td align="right">0.1825</td><td align="right">6.309</td><td align="right">8.288</td><td align="right"><ins>76.47</ins></td><td align="right"><ins>0.7032</ins></td><td align="right"><ins>0.8931</ins></td><td align="right"><ins>0.8505</ins></td></tr>
   <tr><td align="left">CodeFormer</td><td align="right">27.38</td><td align="right">0.8045</td><td align="right">0.2195</td><td align="right">0.1876</td><td align="right">5.856</td><td align="right">8.693</td><td align="right">74.42</td><td align="right">0.6649</td><td align="right">0.8854</td><td align="right">0.7954</td></tr>
-  <tr><td align="left">InstantRestore</td><td align="right">27.42</td><td align="right">0.8283</td><td align="right"><u>0.1380</u></td><td align="right"><u>0.1421</u></td><td align="right">6.209</td><td align="right">8.403</td><td align="right">68.11</td><td align="right">0.5166</td><td align="right">0.8562</td><td align="right">0.7704</td></tr>
+  <tr><td align="left">InstantRestore</td><td align="right">27.42</td><td align="right">0.8283</td><td align="right"><ins>0.1380</ins></td><td align="right"><ins>0.1421</ins></td><td align="right">6.209</td><td align="right">8.403</td><td align="right">68.11</td><td align="right">0.5166</td><td align="right">0.8562</td><td align="right">0.7704</td></tr>
   <tr><td align="left">SparkVSR</td><td align="right"><strong>30.62</strong></td><td align="right"><strong>0.8863</strong></td><td align="right">0.1755</td><td align="right">0.1586</td><td align="right">6.545</td><td align="right">8.170</td><td align="right">65.66</td><td align="right">0.4417</td><td align="right">0.8459</td><td align="right">0.7467</td></tr>
   <tr><td align="left">RG-FVR</td><td align="right">26.69</td><td align="right">0.8308</td><td align="right">0.1645</td><td align="right">0.1461</td><td align="right">5.685</td><td align="right">9.024</td><td align="right">70.51</td><td align="right">0.5246</td><td align="right">0.8688</td><td align="right">0.7407</td></tr>
   <tr><td align="left">SeedVR2-3B</td><td align="right">27.49</td><td align="right">0.8456</td><td align="right">0.2227</td><td align="right">0.1630</td><td align="right">6.377</td><td align="right">8.339</td><td align="right">57.36</td><td align="right">0.4412</td><td align="right">0.7548</td><td align="right">0.5601</td></tr>
@@ -75,7 +86,7 @@ averaged equally over common valid clips.
   <tr><td align="left">FlashVSR-Tiny</td><td align="right">27.74</td><td align="right">0.8497</td><td align="right">0.1563</td><td align="right">0.1428</td><td align="right">6.490</td><td align="right">8.275</td><td align="right">70.19</td><td align="right">0.5395</td><td align="right">0.8810</td><td align="right">0.7709</td></tr>
   <tr><td align="left">FlashVSR-Full</td><td align="right">27.52</td><td align="right">0.8435</td><td align="right">0.1652</td><td align="right">0.1458</td><td align="right">6.468</td><td align="right">8.316</td><td align="right">71.23</td><td align="right">0.5776</td><td align="right">0.8820</td><td align="right">0.7729</td></tr>
   <tr><td align="left">FlashVSR+</td><td align="right">26.68</td><td align="right">0.8379</td><td align="right">0.1652</td><td align="right">0.1473</td><td align="right">6.524</td><td align="right">8.230</td><td align="right">69.83</td><td align="right">0.4947</td><td align="right">0.8775</td><td align="right">0.7851</td></tr>
-  <tr><td align="left">Ours</td><td align="right"><u>28.67</u></td><td align="right"><u>0.8836</u></td><td align="right"><strong>0.0793</strong></td><td align="right"><strong>0.0858</strong></td><td align="right"><u>7.413</u></td><td align="right"><u>7.561</u></td><td align="right">66.84</td><td align="right">0.4908</td><td align="right">0.8245</td><td align="right">0.7178</td></tr>
+  <tr><td align="left">Ours</td><td align="right"><ins>28.67</ins></td><td align="right"><ins>0.8836</ins></td><td align="right"><strong>0.0793</strong></td><td align="right"><strong>0.0858</strong></td><td align="right"><ins>7.413</ins></td><td align="right"><ins>7.561</ins></td><td align="right">66.84</td><td align="right">0.4908</td><td align="right">0.8245</td><td align="right">0.7178</td></tr>
   <tr><td align="left">Ours+</td><td align="right">23.52</td><td align="right">0.7525</td><td align="right">0.2402</td><td align="right">0.1902</td><td align="right"><strong>7.453</strong></td><td align="right"><strong>7.520</strong></td><td align="right"><strong>77.62</strong></td><td align="right"><strong>0.7081</strong></td><td align="right"><strong>0.8997</strong></td><td align="right"><strong>0.8823</strong></td></tr>
 </tbody>
 </table>
@@ -98,12 +109,12 @@ synchronization and no-reference quality metrics only.
   <tr><th align="left">Pipeline</th><th align="right">Sync-C ↑</th><th align="right">Sync-D ↓</th><th align="right">MUSIQ ↑</th><th align="right">CLIP-IQA ↑</th><th align="right">FasterVQA ↑</th><th align="right">DOVER ↑</th></tr>
 </thead>
 <tbody>
-  <tr><td align="left">FlashVSR Full → X-Dub</td><td align="right">6.137</td><td align="right">9.332</td><td align="right">73.25</td><td align="right"><u>0.6582</u></td><td align="right"><u>0.8750</u></td><td align="right"><u>0.7845</u></td></tr>
+  <tr><td align="left">FlashVSR Full → X-Dub</td><td align="right">6.137</td><td align="right">9.332</td><td align="right">73.25</td><td align="right"><ins>0.6582</ins></td><td align="right"><ins>0.8750</ins></td><td align="right"><ins>0.7845</ins></td></tr>
   <tr><td align="left">FlashVSR Full → KeySync</td><td align="right">7.347</td><td align="right">7.840</td><td align="right">68.07</td><td align="right">0.4908</td><td align="right">0.8736</td><td align="right">0.7647</td></tr>
   <tr><td align="left">FlashVSR Full → TBDub Teacher</td><td align="right">7.736</td><td align="right">7.543</td><td align="right">70.18</td><td align="right">0.6208</td><td align="right">0.8650</td><td align="right">0.7179</td></tr>
   <tr><td align="left">FlashVSR Full → TBDub Student</td><td align="right">7.469</td><td align="right">8.196</td><td align="right">69.72</td><td align="right">0.5834</td><td align="right">0.8641</td><td align="right">0.7309</td></tr>
-  <tr><td align="left">FlashVSR Full → LipForcing</td><td align="right"><u>7.917</u></td><td align="right"><u>7.186</u></td><td align="right">66.18</td><td align="right">0.4973</td><td align="right">0.8476</td><td align="right">0.6958</td></tr>
-  <tr><td align="left">SparkVSR → X-Dub</td><td align="right">5.853</td><td align="right">9.409</td><td align="right"><u>74.12</u></td><td align="right">0.6335</td><td align="right">0.8596</td><td align="right">0.7822</td></tr>
+  <tr><td align="left">FlashVSR Full → LipForcing</td><td align="right"><ins>7.917</ins></td><td align="right"><ins>7.186</ins></td><td align="right">66.18</td><td align="right">0.4973</td><td align="right">0.8476</td><td align="right">0.6958</td></tr>
+  <tr><td align="left">SparkVSR → X-Dub</td><td align="right">5.853</td><td align="right">9.409</td><td align="right"><ins>74.12</ins></td><td align="right">0.6335</td><td align="right">0.8596</td><td align="right">0.7822</td></tr>
   <tr><td align="left">SparkVSR → KeySync</td><td align="right">7.175</td><td align="right">7.964</td><td align="right">62.17</td><td align="right">0.4271</td><td align="right">0.8318</td><td align="right">0.7199</td></tr>
   <tr><td align="left">SparkVSR → TBDub Teacher</td><td align="right">7.208</td><td align="right">7.817</td><td align="right">67.94</td><td align="right">0.5383</td><td align="right">0.8389</td><td align="right">0.7030</td></tr>
   <tr><td align="left">SparkVSR → TBDub Student</td><td align="right">7.090</td><td align="right">8.401</td><td align="right">67.25</td><td align="right">0.4987</td><td align="right">0.8412</td><td align="right">0.7174</td></tr>
@@ -130,19 +141,21 @@ respectively; w/o Audio removes audio conditioning.
   <tr><th align="left">Metric</th><th align="right">GT</th><th align="right">Ours</th><th align="right">w/o Audio</th><th align="right">DirectMotion</th><th align="right">X-Dub (adapted)</th></tr>
 </thead>
 <tbody>
-  <tr><td align="left">PSNR ↑</td><td align="right">—</td><td align="right"><u>29.10</u></td><td align="right"><strong>29.36</strong></td><td align="right">28.24</td><td align="right">26.63</td></tr>
-  <tr><td align="left">SSIM ↑</td><td align="right">—</td><td align="right"><u>0.8852</u></td><td align="right"><strong>0.8889</strong></td><td align="right">0.8600</td><td align="right">0.8415</td></tr>
-  <tr><td align="left">LPIPS ↓</td><td align="right">—</td><td align="right"><strong>0.0850</strong></td><td align="right"><u>0.0856</u></td><td align="right">0.1341</td><td align="right">0.1523</td></tr>
-  <tr><td align="left">MUSIQ ↑</td><td align="right">63.26</td><td align="right">68.19</td><td align="right">69.09</td><td align="right"><u>69.49</u></td><td align="right"><strong>70.08</strong></td></tr>
-  <tr><td align="left">CLIP-IQA ↑</td><td align="right">0.4971</td><td align="right">0.5591</td><td align="right">0.5709</td><td align="right"><u>0.5807</u></td><td align="right"><strong>0.6145</strong></td></tr>
-  <tr><td align="left">FasterVQA ↑</td><td align="right">0.7880</td><td align="right">0.8352</td><td align="right"><u>0.8432</u></td><td align="right"><strong>0.8595</strong></td><td align="right">0.8354</td></tr>
-  <tr><td align="left">DOVER ↑</td><td align="right">0.6392</td><td align="right">0.7367</td><td align="right"><u>0.7567</u></td><td align="right"><strong>0.7602</strong></td><td align="right">0.7232</td></tr>
-  <tr><td align="left">Sync-C ↑</td><td align="right">7.762</td><td align="right"><strong>7.621</strong></td><td align="right">4.283</td><td align="right">7.254</td><td align="right"><u>7.407</u></td></tr>
-  <tr><td align="left">Sync-D ↓</td><td align="right">7.374</td><td align="right"><strong>7.560</strong></td><td align="right">10.524</td><td align="right"><u>7.875</u></td><td align="right">8.144</td></tr>
+  <tr><td align="left">PSNR ↑</td><td align="right">—</td><td align="right"><ins>29.10</ins></td><td align="right"><strong>29.36</strong></td><td align="right">28.24</td><td align="right">26.63</td></tr>
+  <tr><td align="left">SSIM ↑</td><td align="right">—</td><td align="right"><ins>0.8852</ins></td><td align="right"><strong>0.8889</strong></td><td align="right">0.8600</td><td align="right">0.8415</td></tr>
+  <tr><td align="left">LPIPS ↓</td><td align="right">—</td><td align="right"><strong>0.0850</strong></td><td align="right"><ins>0.0856</ins></td><td align="right">0.1341</td><td align="right">0.1523</td></tr>
+  <tr><td align="left">MUSIQ ↑</td><td align="right">63.26</td><td align="right">68.19</td><td align="right">69.09</td><td align="right"><ins>69.49</ins></td><td align="right"><strong>70.08</strong></td></tr>
+  <tr><td align="left">CLIP-IQA ↑</td><td align="right">0.4971</td><td align="right">0.5591</td><td align="right">0.5709</td><td align="right"><ins>0.5807</ins></td><td align="right"><strong>0.6145</strong></td></tr>
+  <tr><td align="left">FasterVQA ↑</td><td align="right">0.7880</td><td align="right">0.8352</td><td align="right"><ins>0.8432</ins></td><td align="right"><strong>0.8595</strong></td><td align="right">0.8354</td></tr>
+  <tr><td align="left">DOVER ↑</td><td align="right">0.6392</td><td align="right">0.7367</td><td align="right"><ins>0.7567</ins></td><td align="right"><strong>0.7602</strong></td><td align="right">0.7232</td></tr>
+  <tr><td align="left">Sync-C ↑</td><td align="right">7.762</td><td align="right"><strong>7.621</strong></td><td align="right">4.283</td><td align="right">7.254</td><td align="right"><ins>7.407</ins></td></tr>
+  <tr><td align="left">Sync-D ↓</td><td align="right">7.374</td><td align="right"><strong>7.560</strong></td><td align="right">10.524</td><td align="right"><ins>7.875</ins></td><td align="right">8.144</td></tr>
 </tbody>
 </table>
 
-## Requirements
+## Installation
+
+### Requirements
 
 - Linux and Python 3.10+
 - An NVIDIA CUDA GPU with BF16 support
@@ -154,7 +167,7 @@ The current runtime has been smoke-tested on H20. 2× inference needs more GPU
 memory; `--cpu-offload` trades speed for lower model residency. See
 [validation details](VALIDATION.md) for tested configurations.
 
-## Installation
+### Set up the environment
 
 Clone this repository and install a CUDA-compatible PyTorch build for your GPU,
 then set up the inference package:
@@ -183,7 +196,7 @@ to their original publishers.
 
 | Model | Purpose | Official download | Local path |
 |---|---|---|---|
-| Taomatefvsr | Audio-conditioned restoration model | [TaoMate-FVSR.safetensors](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/main/TaoMate-FVSR.safetensors) | `models/TaoMate-FVSR.safetensors` |
+| TaoMate-FVSR | Audio-conditioned restoration model | [TaoMate-FVSR.safetensors](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/main/TaoMate-FVSR.safetensors) | `models/TaoMate-FVSR.safetensors` |
 | Wan2.2 VAE | Video encoding and decoding | [Wan-AI / Wan2.2 VAE](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B/resolve/main/Wan2.2_VAE.pth) | `models/Wan2.2_VAE.pth` |
 | HuBERT Large | Audio features | [facebook/hubert-large-ll60k](https://huggingface.co/facebook/hubert-large-ll60k) | `models/hubert/` |
 | GPEN-BFR-512 | First-frame enhancement for 1× | [GPEN-BFR-512.pth](https://public-vigen-video.oss-cn-shanghai.aliyuncs.com/robin/models/GPEN-BFR-512.pth) | `models/GPEN-BFR-512.pth` |
@@ -194,6 +207,9 @@ to their original publishers.
 | RTMW-X | DWPose whole-body landmarks | [OpenMMLab RTMW-X](https://download.openmmlab.com/mmpose/v1/projects/rtmw/rtmw-x_simcc-cocktail14_pt-ucoco_270e-384x288-f840f204_20231122.pth) | `models/dwpose/` |
 
 ### Download third-party weights
+
+<details>
+<summary><strong>Download commands — Wan VAE, HuBERT, GPEN and face components</strong></summary>
 
 ```bash
 mkdir -p models/hubert
@@ -227,7 +243,9 @@ filename even though the publisher's download URL ends in `pytorch_model.pt`.
 The 1024 model is linked from the [official GPEN repository](https://github.com/yangxy/GPEN)
 to its ModelScope release; no third-party weights are rehosted here.
 
-### Taomatefvsr checkpoint
+</details>
+
+### TaoMate-FVSR checkpoint
 
 The checkpoint is [TaoMate-FVSR.safetensors](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/main/TaoMate-FVSR.safetensors)
 in `TaoLiveAIGC/TaoMate-FVSR`. The model repository is currently private: your
@@ -252,8 +270,13 @@ in this Git repository.
 
 ### Full-scene components
 
-The default path also needs YOLOX/RTMW; the compositing mask is bundled. Install
-MMDetection and MMPose following the [MMPose installation guide](https://mmpose.readthedocs.io/en/latest/installation.html).
+The default path also needs YOLOX/RTMW; the compositing mask is bundled.
+
+<details>
+<summary><strong>Required DWPose setup for full-scene inputs</strong></summary>
+
+Install MMDetection and MMPose following the
+[MMPose installation guide](https://mmpose.readthedocs.io/en/latest/installation.html).
 An independent pose environment is supported through `--pose-python /path/to/pose-env/bin/python`;
 this keeps OpenMMLab's PyTorch/MMCV requirements separate from the restoration
 environment. The pose environment used for validation has PyTorch 2.5.1+cu121,
@@ -274,6 +297,8 @@ checkout: no separate mask download or private SDK is needed. Use
 histogram matching and blending directly and uses the bundled mask unchanged.
 `--pose-model-dir` overrides the YOLOX/RTMW directory. DWPose configs and weights
 must still be prepared locally even when restoration weights download automatically.
+
+</details>
 
 ## Inference
 
@@ -298,6 +323,9 @@ it is not a resized GPEN-BFR-512 result. Generated frames are reduced with area
 resampling **before** histogram matching and mask blending. Neither option
 enlarges the background or changes the final scene dimensions.
 
+<details>
+<summary><strong>Separate pose environments and already-cropped inputs</strong></summary>
+
 Add `--pose-python /path/to/pose-env/bin/python` when using a separate pose
 environment. DWPose uses CPU by default; `--pose-device cuda:0` enables GPU
 preprocessing, which finishes before the restoration model is loaded.
@@ -305,6 +333,8 @@ preprocessing, which finishes before the restoration model is loaded.
 For an already-cropped **512×512** input, add `--cropped`. This skips DWPose and
 scene paste-back and returns the restored 512×512 face video. It also reduces
 2× model output back to 512; no scene models or paste mask are needed.
+
+</details>
 
 ### Visual dubbing with target audio
 
@@ -368,6 +398,21 @@ tests/                      Unit tests
 
 The Python package and installed command remain named `livevsr`.
 
+## Citation
+
+If you find TaoMate-FVSR useful in your research, please cite:
+
+```bibtex
+@misc{li2026taomatefvsr,
+  title={TaoMate-FVSR: Audio-Guided Facial Video Restoration},
+  author={Xinyang Li and Zeran Xu and Qijun Gan and Chenwei Zhang and Meiguang Jin and Junfeng Ma},
+  year={2026},
+  eprint={2611.03393},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2611.03393}
+}
+```
+
 ## License
 
 Source code is released under [Apache-2.0](LICENSE). Third-party code and model
@@ -386,5 +431,6 @@ with GPEN) for reference-frame preparation; and
 We thank [DWPose](https://github.com/IDEA-Research/DWPose),
 [MMDetection](https://github.com/open-mmlab/mmdetection), and
 [MMPose](https://github.com/open-mmlab/mmpose) for person detection and landmark estimation.
-We also thank [TaoMate](https://github.com/TaoLiveAIGC/TaoMate) for the repository
-presentation reference.
+We also thank [TaoMate](https://github.com/TaoLiveAIGC/TaoMate) and
+[TaoMate-HD](https://github.com/TaoLiveAIGC/TaoMate-HD) for the repository
+presentation references.
