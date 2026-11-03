@@ -197,6 +197,7 @@ to their original publishers.
 | Model | Purpose | Official download | Local path |
 |---|---|---|---|
 | TaoMate-FVSR | Audio-conditioned restoration model | [TaoMate-FVSR.safetensors](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/main/TaoMate-FVSR.safetensors) | `models/TaoMate-FVSR.safetensors` |
+| TaoMate-FVSR configuration | Inference settings | [config.json](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/main/config.json) | `models/config.json` |
 | Wan2.2 VAE | Video encoding and decoding | [Wan-AI / Wan2.2 VAE](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B/resolve/main/Wan2.2_VAE.pth) | `models/Wan2.2_VAE.pth` |
 | HuBERT Large | Audio features | [facebook/hubert-large-ll60k](https://huggingface.co/facebook/hubert-large-ll60k) | `models/hubert/` |
 | GPEN-BFR-512 | First-frame enhancement for 1× | [GPEN-BFR-512.pth](https://public-vigen-video.oss-cn-shanghai.aliyuncs.com/robin/models/GPEN-BFR-512.pth) | `models/GPEN-BFR-512.pth` |
@@ -248,15 +249,20 @@ to its ModelScope release; no third-party weights are rehosted here.
 ### TaoMate-FVSR checkpoint
 
 The checkpoint is [TaoMate-FVSR.safetensors](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/main/TaoMate-FVSR.safetensors)
-in `TaoLiveAIGC/TaoMate-FVSR`. The model repository is currently private: your
-Hugging Face account/token must have read access. Authenticate once on the
-machine that downloads the model; never put tokens in source files or URLs.
+in the public `TaoLiveAIGC/TaoMate-FVSR` model repository. Download the checkpoint
+and its inference configuration together for the local `--model-dir models` flow:
 
 ```bash
-hf auth login
-# Optional: download explicitly for --model-dir models.
-hf download TaoLiveAIGC/TaoMate-FVSR TaoMate-FVSR.safetensors --local-dir models
+hf download TaoLiveAIGC/TaoMate-FVSR \
+  TaoMate-FVSR.safetensors config.json --local-dir models
 ```
+
+The Hub's [download statistics](https://huggingface.co/docs/hub/models-download-stats)
+count requests to `config.json`; weight-only downloads are not counted under the
+current configuration. The command above includes both files. The current CLI's
+automatic checkpoint download fetches only the weights, so use the explicit
+command above to include the configuration. `config.json` documents the inference
+settings; it does not override CLI arguments.
 
 Omit `--model-dir` and `--checkpoint` to download our model automatically using
 [`livevsr/model_sources.json`](livevsr/model_sources.json). Wan VAE and HuBERT
