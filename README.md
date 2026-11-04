@@ -2,7 +2,7 @@
 
 **Audio-Guided Facial Video Restoration**
 
-[![arXiv](https://img.shields.io/badge/arXiv-2611.03393-red.svg)](https://arxiv.org/pdf/2611.03393)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.03393-red.svg)](https://arxiv.org/abs/2611.03393)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://taoliveaigc.github.io/TaoMate-FVSR/)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow)](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR)
 [![Code License](https://img.shields.io/badge/Code-Apache--2.0-green)](LICENSE)
@@ -30,7 +30,7 @@ are downloaded separately, and input media is supplied locally.
 ## News
 
 - **2026-11-03:** 🎉 Inference code released, including full-scene crop/paste-back, scale-matched GPEN references, and 1× / 2× inference through one entry point.
-- **2026-11-02:** Our [paper](https://arxiv.org/pdf/2611.03393) is available on arXiv.
+- **2026-11-02:** Our [paper](https://arxiv.org/abs/2611.03393) is available on arXiv.
 
 ## Demo
 
