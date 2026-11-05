@@ -5,12 +5,15 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2611.03393-red.svg)](https://arxiv.org/abs/2611.03393)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://taoliveaigc.github.io/TaoMate-FVSR/)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow)](https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR)
+[![ComfyUI](https://img.shields.io/badge/ComfyUI-Experimental-blue)](https://github.com/TaoLiveAIGC/TaoMate-FVSR/tree/comfyui)
 [![Code License](https://img.shields.io/badge/Code-Apache--2.0-green)](LICENSE)
 
 [Demo](#demo) · [Results](#experimental-results) ·
 [Installation](#installation) · [Model Downloads](#model-downloads) ·
 [Inference](#inference) · [Citation](#citation) ·
 [Technical Guide](docs/inference.md)
+
+**Prefer ComfyUI?** Use the dedicated [ComfyUI branch](https://github.com/TaoLiveAIGC/TaoMate-FVSR/tree/comfyui) for custom nodes, installation instructions, model setup and ready-to-import workflows: [English guide](https://github.com/TaoLiveAIGC/TaoMate-FVSR/blob/comfyui/README.md) · [中文安装与使用指南](https://github.com/TaoLiveAIGC/TaoMate-FVSR/blob/comfyui/README.zh-CN.md). It reuses the original TaoMate-FVSR weights; no converted checkpoint is required.
 
 TaoMate-FVSR restores face videos with audio conditioning, sparse visual
 references, and generated-frame history. It supports restoration with the
@@ -24,8 +27,9 @@ original audio and visual dubbing with replacement speech.
   edited first frame, or supply a finished reference image. Default enhancement
   uses one GPEN-BFR-512 pass for 1× and one GPEN-BFR-1024 pass for 2×.
 
-This repository contains only the standalone inference runtime. Model weights
-are downloaded separately, and input media is supplied locally.
+The `main` branch contains the standalone inference runtime; the `comfyui`
+branch provides the ComfyUI integration. Model weights are downloaded
+separately, and input media is supplied locally.
 
 ## News
 
