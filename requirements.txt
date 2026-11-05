@@ -1,0 +1,3 @@
+# Install in ComfyUI's own Python environment. PyTorch is supplied by ComfyUI.
+livevsr @ git+https://github.com/TaoLiveAIGC/TaoMate-FVSR.git@bc924d8572c4e5050cdc8a86e7fab13d30a327db
+ultralytics==8.4.14

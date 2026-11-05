@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "scope": "512 face inference; excludes DWPose and GPEN1024",
+  "gpen_source": {
+    "url": "https://github.com/yangxy/GPEN",
+    "revision": "2c736702983368847fb544d234a22ac7cff25802"
+  },
+  "assets": [
+    {
+      "id": "checkpoint",
+      "revision": "a37c97010a2af15d561f2515481134a8015cc300",
+      "size": 10326266408,
+      "sha256": "914d02e3d830ae465479d7d71dde3a7709bd1f0e7402e7498cd96182f5f5b5ce",
+      "official_url": "https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/a37c97010a2af15d561f2515481134a8015cc300/TaoMate-FVSR.safetensors",
+      "path": "TaoMate-FVSR.safetensors",
+      "digest_evidence": "upstream_sha256",
+      "repo": "TaoLiveAIGC/TaoMate-FVSR",
+      "filename": "TaoMate-FVSR.safetensors"
+    },
+    {
+      "id": "checkpoint_config",
+      "revision": "a37c97010a2af15d561f2515481134a8015cc300",
+      "size": 548,
+      "sha256": "a8b0092f6a947df9ab51a9af384a28e8a8da16f47dd9770dc6ab1b7053e0e4d3",
+      "official_url": "https://huggingface.co/TaoLiveAIGC/TaoMate-FVSR/resolve/a37c97010a2af15d561f2515481134a8015cc300/config.json",
+      "path": "config.json",
+      "digest_evidence": "upstream_sha256",
+      "repo": "TaoLiveAIGC/TaoMate-FVSR",
+      "filename": "config.json"
+    },
+    {
+      "id": "vae",
+      "revision": "921dbaf3f1674a56f47e83fb80a34bac8a8f203e",
+      "size": 2818839170,
+      "sha256": "20eb789667fa5e60e7516bf509512f6cb61f01b0aa0695eadaea930c13892b36",
+      "official_url": "https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B/resolve/921dbaf3f1674a56f47e83fb80a34bac8a8f203e/Wan2.2_VAE.pth",
+      "path": "Wan2.2_VAE.pth",
+      "digest_evidence": "upstream_sha256",
+      "repo": "Wan-AI/Wan2.2-TI2V-5B",
+      "filename": "Wan2.2_VAE.pth"
+    },
+    {
+      "id": "hubert_config",
+      "revision": "ff022d095678a2995f3c49bab18a96a9e553f782",
+      "size": 1600,
+      "sha256": "52e48f7f44bf7f1be327cc3e82368681acf0cc8c5538d757eae9e6685bfe2b16",
+      "official_url": "https://huggingface.co/facebook/hubert-large-ll60k/resolve/ff022d095678a2995f3c49bab18a96a9e553f782/config.json",
+      "path": "hubert/config.json",
+      "digest_evidence": "upstream_git_blob",
+      "repo": "facebook/hubert-large-ll60k",
+      "filename": "config.json"
+    },
+    {
+      "id": "hubert_preprocessor_config",
+      "revision": "ff022d095678a2995f3c49bab18a96a9e553f782",
+      "size": 212,
+      "sha256": "a2254a5b58f72cd4de3632f8eee64f3f098b7c1402128d2f419e7d00ae13e335",
+      "official_url": "https://huggingface.co/facebook/hubert-large-ll60k/resolve/ff022d095678a2995f3c49bab18a96a9e553f782/preprocessor_config.json",
+      "path": "hubert/preprocessor_config.json",
+      "digest_evidence": "upstream_git_blob",
+      "repo": "facebook/hubert-large-ll60k",
+      "filename": "preprocessor_config.json"
+    },
+    {
+      "id": "hubert_pytorch_model",
+      "revision": "ff022d095678a2995f3c49bab18a96a9e553f782",
+      "size": 1261920069,
+      "sha256": "45a299050945479a68cffe2ab7a63fd08931718ba18f05a42dbb86a5164178e0",
+      "official_url": "https://huggingface.co/facebook/hubert-large-ll60k/resolve/ff022d095678a2995f3c49bab18a96a9e553f782/pytorch_model.bin",
+      "path": "hubert/pytorch_model.bin",
+      "digest_evidence": "upstream_sha256",
+      "repo": "facebook/hubert-large-ll60k",
+      "filename": "pytorch_model.bin"
+    },
+    {
+      "id": "gpen",
+      "revision": "upstream URL; content pinned by manifest SHA256",
+      "size": 284085738,
+      "sha256": "f1002c41add95b0decad69604d80455576f7187dd99ca16bd611bcfd44c10b51",
+      "official_url": "https://public-vigen-video.oss-cn-shanghai.aliyuncs.com/robin/models/GPEN-BFR-512.pth",
+      "path": "GPEN-BFR-512.pth",
+      "digest_evidence": "local_verified_sha256"
+    },
+    {
+      "id": "retinaface",
+      "revision": "upstream URL; content pinned by manifest SHA256",
+      "size": 109497761,
+      "sha256": "6d1de9c2944f2ccddca5f5e010ea5ae64a39845a86311af6fdf30841b0a5a16d",
+      "official_url": "https://public-vigen-video.oss-cn-shanghai.aliyuncs.com/robin/models/RetinaFace-R50.pth",
+      "path": "RetinaFace-R50.pth",
+      "digest_evidence": "local_verified_sha256"
+    },
+    {
+      "id": "parsenet",
+      "revision": "upstream URL; content pinned by manifest SHA256",
+      "size": 85331193,
+      "sha256": "3d558d8d0e42c20224f13cf5a29c79eba2d59913419f945545d8cf7b72920de2",
+      "official_url": "https://public-vigen-video.oss-cn-shanghai.aliyuncs.com/robin/models/ParseNet-latest.pth",
+      "path": "ParseNet-latest.pth",
+      "digest_evidence": "local_verified_sha256"
+    },
+    {
+      "id": "yolo_face",
+      "path": "face_yolov8n.pt",
+      "repo": "Bingsu/adetailer",
+      "filename": "face_yolov8n.pt",
+      "revision": "53cc19de382014514d9d4038601d261a7faa9b7b",
+      "size": 6230011,
+      "sha256": "70b640f8f60b1cf0dcc72f30caf3da9495eb2fb6509da48c53374ad6806e6a9c",
+      "official_url": "https://huggingface.co/Bingsu/adetailer/resolve/53cc19de382014514d9d4038601d261a7faa9b7b/face_yolov8n.pt",
+      "digest_evidence": "local_verified_sha256"
+    }
+  ]
+}

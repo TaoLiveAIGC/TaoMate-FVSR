@@ -1,0 +1,99 @@
+{
+  "1": {
+    "class_type": "TaoMateModelLoader",
+    "inputs": {
+      "model": "(root)",
+      "local_directory": "",
+      "budget_gib": 15
+    }
+  },
+  "2": {
+    "class_type": "TaoMatePrepareVideo",
+    "inputs": {
+      "video_path": "/absolute/path/source.mp4",
+      "audio_path": "",
+      "crop_mode": "yolo_face",
+      "roi_x": 0,
+      "roi_y": 0,
+      "roi_side": 512,
+      "max_frames": 77,
+      "detector_path": "",
+      "crop_scale": 0.8
+    }
+  },
+  "3": {
+    "class_type": "TaoMateGPENReference",
+    "inputs": {
+      "first_crop": [
+        "2",
+        1
+      ],
+      "model": [
+        "1",
+        0
+      ],
+      "gpen_repo": "/absolute/path/GPEN",
+      "seed": 42
+    }
+  },
+  "4": {
+    "class_type": "TaoMateRestore",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "video": [
+        "2",
+        0
+      ],
+      "reference": [
+        "3",
+        0
+      ],
+      "seed": 42,
+      "steps": 10,
+      "noise": 0.8,
+      "shift": 5,
+      "audio_cfg": 4,
+      "ref_cfg": 1.7
+    }
+  },
+  "5": {
+    "class_type": "TaoMateSaveVideo",
+    "inputs": {
+      "result": [
+        "4",
+        0
+      ],
+      "filename_prefix": "TaoMate-FVSR-yolo"
+    }
+  },
+  "6": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "2",
+        1
+      ]
+    }
+  },
+  "7": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "5",
+        0
+      ]
+    }
+  }
+}

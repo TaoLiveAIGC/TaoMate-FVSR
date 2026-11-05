@@ -1,4 +1,6 @@
 __pycache__/
+.worktrees/
+.pytest_cache/
 *.py[cod]
 .venv/
 *.egg-info/

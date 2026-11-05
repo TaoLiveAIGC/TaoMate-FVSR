@@ -1,5 +1,25 @@
 # Third-party components
 
+## ComfyUI branch
+
+This branch packages ComfyUI nodes and a memory-managed runtime adapter for
+TaoMate-FVSR. It installs the original `livevsr` implementation from the fixed
+commit in `requirements.txt`; it does not vendor the original model definitions
+or redistribute model weights. The source license in `LICENSE` is retained
+from the main branch. The original project's component notices below remain
+applicable to that dependency.
+
+The optional automatic crop mode uses separately installed
+[Ultralytics](https://github.com/ultralytics/ultralytics), whose upstream license
+and applicable terms must be reviewed separately, and face weights from
+[Bingsu/adetailer](https://huggingface.co/Bingsu/adetailer). These dependencies
+and weights are not included in this source distribution. Fixed sources and
+checksums are listed in `assets.json`; this project's license does not relicense
+those assets. The ComfyUI crop workflow does not require the original pipeline's
+MMDetection/MMPose/DWPose dependencies.
+
+## Original project notices
+
 The Wan transformer/VAE components are derived from
 [DiffSynth-Studio](https://github.com/modelscope/DiffSynth-Studio) and the
 [Wan models](https://github.com/Wan-Video/Wan2.2), under Apache-2.0.
